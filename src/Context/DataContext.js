@@ -13,7 +13,7 @@ const fakeAuthBackend = {
 
 const useProvideAuth = () => {
   const [trainer, setTrainer] = useState("");
-  const [numPages, setnumPages] = useState(4);
+  const [numPages, setnumPages] = useState(20);
 
   const signIn = (cb) => {
     fakeAuthBackend.signIn(() => {

@@ -1,9 +1,11 @@
-import React from "react";
-import { useAuth } from "../Context/DataContext";
-import "./Paginations.css";
+import React from 'react';
+import { useAuth } from '../Context/DataContext';
+import './Paginations.css';
 
 const Pagination = ({
   typeList,
+  colorList,
+  genderList,
   pokeList,
   page,
   currentPage,
@@ -27,6 +29,16 @@ const Pagination = ({
       for (let i = 1; i <= typeNumPag; i++) {
         pageNums.push(i);
       }
+    } else if (colorList) {
+      pokeNumPag = Math.ceil(colorList.length / numPages);
+      for (let i = 1; i < pokeNumPag; i++) {
+        pageNums.push(i);
+      }
+    } else if (genderList) {
+      pokeNumPag = Math.ceil(genderList.length / numPages);
+      for (let i = 1; i < pokeNumPag; i++) {
+        pageNums.push(i);
+      }
     } else if (pokeList) {
       pokeNumPag = Math.ceil(pokeList.length / numPages);
       for (let i = 1; i < pokeNumPag; i++) {
@@ -48,7 +60,7 @@ const Pagination = ({
     if (num < maxPageLimit + 1 && num > minPageLimit) {
       return (
         <button
-          className={currentPage === num ? "active" : null}
+          className={currentPage === num ? 'active' : null}
           onClick={() => handleBtn(num)}
           key={num}
         >
